@@ -1,2 +1,2 @@
-# bidders for DSP
+# configuration for DSP
 
