@@ -1,2 +1,2 @@
-# bidders for DSP
+# campaign manager and budget goes here
 
