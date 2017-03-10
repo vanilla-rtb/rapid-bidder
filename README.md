@@ -62,10 +62,10 @@ gmake -j4 install
 
 ###Running  application as individaul steps (could be all put in one dsp.sh)\:
 - [x] HTTP-Bidder
-  * dsp/bin/bidder$ ./http_bidder --config etc/config.cfg
+  * rapid-bidder/bin/bidder$ ./http_bidder --config etc/config.cfg
 - [x] Starting multiple bidders in one swoop,  currently configured as 5 bidders in config
-  * dsp/bin/bidders$ ./multi_bidder --config etc/config.cfg
+  * rapid-bidder/bin/bidders$ ./multi_bidder --config etc/config.cfg
 - [x] Cache loader
-  * dsp/bin/loader$ ./cache_loader --config etc/config.cfg
+  * rapid-bidder/bin/loader$ ./cache_loader --config etc/config.cfg
 - [x] Exchange Handler with HTTP handler or Exchange Handler distributing to multi-bidders via communicator 
-  * dsp/bin/exchange$ ./exchange_handler --config etc/config.cfg
+  * rapid-bidder/bin/exchange$ ./exchange_handler --config etc/config.cfg
