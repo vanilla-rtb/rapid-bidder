@@ -60,7 +60,7 @@ Linux command \:
 pass it to your make script like this
 gmake -j4 install
 
-###Running  application as individaul steps (could be all put in one dsp.sh)\:
+###Running  application as individaul steps (could be all put in one rapid-bidder.sh)\:
 - [x] HTTP-Bidder
   * rapid-bidder/bin/bidder$ ./http_bidder --config etc/config.cfg
 - [x] Starting multiple bidders in one swoop,  currently configured as 5 bidders in config
