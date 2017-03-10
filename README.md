@@ -1,4 +1,4 @@
-# rapid-dsp
+# rapid-bidder
 
 Real Time Bidding (RTB) - Demand Side Platform (DSP)
 
