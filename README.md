@@ -4,8 +4,6 @@ Real Time Bidding (RTB) - Demand Side Platform (DSP)
 
 open-source application utilizing  vanilla-rtb stack.
 
-What differs us from other open-source libraries like RTBkit: our stack is small, easy to adapt to and  completely decoupled.
-
 
 [our DSP ecosystem](../../wiki)
 
