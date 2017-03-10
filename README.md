@@ -14,7 +14,7 @@ open-source application utilizing  vanilla-rtb stack.
 
 Structure ( how we see this structure for DSP ) :
 * [/](../../tree/master/) -- the root directory
-   * [framework/](../../tree/master/framework/) -- vanilla-rtb stack
+   * [framework/](https://github.com/venediktov/vanilla-rtb/) -- vanilla-rtb stack
    * [exchange_server/](../../tree/master/exchange_server/) -- exchange server process implementing connection to exchanges
    * [campaign_manager/](../../tree/master/campaign_manager/) -- compaign management service collaborates with bidders
    * [bidders/](../../tree/master/bidder_service/) -- all kind of bidders implementation goes here
