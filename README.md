@@ -65,12 +65,12 @@ gmake -j4 install
 
 ###Running  application as individaul steps (could be all put in one rapid-bidder.sh)\:
 - [x] HTTP-Bidder
-  * rapid-bidder/bin/bidder$ ./http_bidder --config etc/config.cfg
+  * rapid-bidder/bin$ ./http_bidder --config etc/config.cfg
 - [x] Starting multiple bidders in one swoop,  currently configured as 5 bidders in config
-  * rapid-bidder/bin/bidders$ ./multi_bidder --config etc/config.cfg
+  * rapid-bidder/bin$ ./multi_bidder --config etc/config.cfg
 - [x] Cache loader
-  * rapid-bidder/bin/loader$ ./cache_loader --config etc/config.cfg
+  * rapid-bidder/bin$ ./cache_loader --config etc/config.cfg
 - [x] Exchange Handler with HTTP handler or Exchange Handler distributing to multi-bidders via communicator 
-  * rapid-bidder/bin/exchange$ ./exchange_server --config etc/config.cfg
-  * rapid-bidder/bin/exchange$ ./multi_bidder_exchange_server --config etc/config.cfg
+  * rapid-bidder/bin$ ./exchange_server --config etc/config.cfg
+  * rapid-bidder/bin$ ./multi_bidder_exchange_server --config etc/config.cfg
   
