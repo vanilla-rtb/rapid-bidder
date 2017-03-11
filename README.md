@@ -16,7 +16,7 @@ Structure ( how we see this structure for DSP ) :
 * [/](../../tree/master/) -- the root directory
    * [framework/](https://github.com/venediktov/vanilla-rtb/) -- vanilla-rtb stack
    * [exchange_server/](../../tree/master/exchange_server/) -- exchange server process implementing connection to exchanges
-   * [campaign_manager/](../../tree/master/campaign_manager/) -- compaign management service collaborates with bidders
+   * [budget/](../../tree/master/budget/) -- compaign management, budget , banker
    * [bidders/](../../tree/master/bidders/) -- all kind of bidders implementation goes here
    * [loaders/](../../tree/master/loaders/) -- all cache loaders as service goes here
    * [etc/](../../tree/master/etc/) -- DSP configuration for all components of application
