@@ -19,6 +19,7 @@ Structure ( how we see this structure for DSP ) :
    * [budget/](../../tree/master/budget/) -- compaign management, budget , banker
    * [bidders/](../../tree/master/bidders/) -- all kind of bidders implementation goes here
    * [loaders/](../../tree/master/loaders/) -- all cache loaders as service goes here
+   * [UI/](../../tree/master/UI/) -- all admin html files and AngularJS stack go here
    * [etc/](../../tree/master/etc/) -- DSP configuration for all components of application
 * [CMakeLists.txt] - cmake file
 
