@@ -2,6 +2,9 @@
 
 cmake_minimum_required(VERSION 3.1)
 
+
+project(rapid-bidder)
+
 if(WIN32)
 else(WIN32)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic-errors")
@@ -24,11 +27,11 @@ if(Boost_FOUND)
 endif()
 
 ## Configuring vanilla-rtb/dsp/exchange_server
-include_directories("${PROJECT_SOURCE_DIR}"
-                    "${PROJECT_SOURCE_DIR}/framework/"
-                    "${PROJECT_SOURCE_DIR}/framework/rtb"
-                    "${PROJECT_SOURCE_DIR}/framework/jsonv/include"
-                   )
+#include_directories("${PROJECT_SOURCE_DIR}"
+#                    "${PROJECT_SOURCE_DIR}/framework/"
+#                    "${PROJECT_SOURCE_DIR}/framework/rtb"
+#                    "${PROJECT_SOURCE_DIR}/framework/jsonv/include"
+#                   )
 
 
 add_definitions(-DBOOST_LOG_DYN_LINK -DBOOST_PROGRAM_OPTIONS_DYN_LINK)

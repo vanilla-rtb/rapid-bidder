@@ -10,8 +10,8 @@
 #include "datacache/entity_cache.hpp"
 #include "datacache/memory_types.hpp"
 #include "rtb/common/perf_timer.hpp"
-#include "bidder/selector.hpp"
-#include "bidder/serialization.hpp"
+#include "bidders/selector.hpp"
+#include "bidders/serialization.hpp"
 #include "config.hpp"
 
 
