@@ -71,4 +71,6 @@ gmake -j4 install
 - [x] Cache loader
   * rapid-bidder/bin/loader$ ./cache_loader --config etc/config.cfg
 - [x] Exchange Handler with HTTP handler or Exchange Handler distributing to multi-bidders via communicator 
-  * rapid-bidder/bin/exchange$ ./exchange_handler --config etc/config.cfg
+  * rapid-bidder/bin/exchange$ ./exchange_server --config etc/config.cfg
+  * rapid-bidder/bin/exchange$ ./multi_bidder_exchange_server --config etc/config.cfg
+  
