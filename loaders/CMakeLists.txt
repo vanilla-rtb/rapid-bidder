@@ -20,6 +20,10 @@ if (WIN32)
     target_compile_definitions(jsonv PRIVATE JSON_SO=1 _LIB JSON_COMPILING=1)
 endif(WIN32)
 
+if ( NOT WIN32)
+set(RT_LIB rt)
+endif(NOT WIN32)
+
 target_link_libraries(
     cache_loader_service
     crud_service
