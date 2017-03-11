@@ -25,7 +25,9 @@ Structure ( how we see this structure for DSP ) :
 >This DSP depends on  vanilla-rtb stack which referened via gh-submodule.
 >To update to the latest version of vanilla-rtb stack use the following commands \:
 
-* git submodule foreach git pull
+* git clone --recursive git@github.com:vanilla-rtb/rapid-bidder.git vanilla-rtb/rapid-bidder
+* git submodule foreach git pull 
+* git submodule sync --recursive
 
 
 ###*(&#x1F4D7;) To build DSP suite of services use following commands in the root of dsp*
