@@ -7,7 +7,7 @@ open-source application utilizing  vanilla-rtb stack.
 
 [our DSP ecosystem](https://github.com/venediktov/vanilla-rtb/wiki)
 
-[Multi-bidder-model-with-communicator-for-Win-notifications](https://github.com/venediktov/vanilla-rtb/wiki/Multi-bidder-model-with-communicator-for-Win-notifications)
+[Multi-bidder-model-with-communicator-for-Win-notifications](https://github.com/venediktov/vanilla-rtb/wiki/Multi-bidder-model-with-communicator-for-Win-Loss-notifications)
 
 [![Join the chat at https://gitter.im/vanilla-rtb/Lobby](https://badges.gitter.im/vanilla-rtb/Lobby.svg)](https://gitter.im/vanilla-rtb/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
 [![build ](https://travis-ci.org/venediktov/vanilla-rtb.svg?branch=master)](https://travis-ci.org/venediktov/vanilla-rtb)
