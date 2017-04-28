@@ -13,6 +13,28 @@ endif(WIN32)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set ( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/bin )
+message("CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
+message("CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}")
+message("CMAKE_CURRENT_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR}")
+
+# use, i.e. don't skip the full RPATH for the build tree
+SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
+
+# when building, don't use the install RPATH already
+# (but later on when installing)
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+
+IF (UNIX AND NOT APPLE)
+    SET(CMAKE_INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/../lib64")
+ELSE (LINUX)
+    SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib:${CMAKE_INSTALL_PREFIX}/lib64")
+ENDIF (LINUX)
+
+# add the automatically determined parts of the RPATH
+# which point to directories outside the build tree to the install RPATH
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 set(REQUIRED_BOOST_LIBRARIES)
 list(APPEND REQUIRED_BOOST_LIBRARIES "log" "program_options" "system" "serialization" "date_time")
 set(Boost_USE_MULTITHREADED ON)
@@ -25,13 +47,6 @@ find_package(Boost
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
-
-## Configuring vanilla-rtb/dsp/exchange_server
-#include_directories("${PROJECT_SOURCE_DIR}"
-#                    "${PROJECT_SOURCE_DIR}/framework/"
-#                    "${PROJECT_SOURCE_DIR}/framework/rtb"
-#                    "${PROJECT_SOURCE_DIR}/framework/jsonv/include"
-#                   )
 
 
 add_definitions(-DBOOST_LOG_DYN_LINK -DBOOST_PROGRAM_OPTIONS_DYN_LINK)
