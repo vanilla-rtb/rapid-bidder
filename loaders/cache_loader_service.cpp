@@ -4,13 +4,13 @@
 #include "CRUD/service/server.hpp"
 #include "CRUD/handlers/crud_dispatcher.hpp"
 #include "rtb/config/config.hpp"
-#include "datacache/ad_entity.hpp"
-#include "datacache/geo_ad_entity.hpp"
-#include "datacache/city_country_entity.hpp"
-#include "datacache/entity_cache.hpp"
-#include "datacache/memory_types.hpp"
+#include "rtb/datacache/ad_entity.hpp"
+#include "rtb/datacache/entity_cache.hpp"
+#include "rtb/datacache/memory_types.hpp"
 #include "rtb/common/perf_timer.hpp"
-#include "bidders/selector.hpp"
+#include "datacache/geo_entity.hpp"
+#include "datacache/city_country_entity.hpp"
+#include "bidders/bidder_selector.hpp"
 #include "bidders/serialization.hpp"
 #include "config.hpp"
 
@@ -47,16 +47,16 @@ int main(int argc, char *argv[]) {
     }
     LOG(debug) << config;
     init_framework_logging(config.data().log_file_name);
-    vanilla::Selector<CacheLoadConfig> selector(config);
+    vanilla::BidderCaches<CacheLoadConfig> bidder_caches(config);
     GeoAdDataEntity<CacheLoadConfig>  geo_ad_cache(config);
     GeoDataEntity<CacheLoadConfig>    geo_cache(config);
     AdDataEntity<CacheLoadConfig>     ad_cache(config);
     
     std::map<std::string, std::function<void()>> caches = {
-        {"geo_ad" , [&geo_ad_cache](){geo_ad_cache.load();}},
-        {"geo"    , [&geo_cache]   (){geo_cache.load();}   },
-        {"ad"     , [&ad_cache]    (){ad_cache.load();}    },
-        {""       , [&selector]    (){selector.load();}    }
+        {"geo_ad" , [&geo_ad_cache]   (){geo_ad_cache.load();}  },
+        {"geo"    , [&geo_cache]      (){geo_cache.load();}     },
+        {"ad"     , [&ad_cache]       (){ad_cache.load();}      },
+        {""       , [&bidder_caches]  (){bidder_caches.load();} }  
     };
     
     //initialize and setup CRUD dispatcher
