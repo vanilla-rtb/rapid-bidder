@@ -34,6 +34,7 @@ ENDIF (LINUX)
 # add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/etc DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 set(REQUIRED_BOOST_LIBRARIES)
 list(APPEND REQUIRED_BOOST_LIBRARIES "log" "program_options" "system" "serialization" "date_time")
