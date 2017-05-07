@@ -45,3 +45,8 @@ target_link_libraries(
         ${RT_LIB}
         )
 
+install(TARGETS http_bidder multi_bidder_service
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+)
+

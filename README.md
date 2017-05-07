@@ -36,22 +36,22 @@ Structure ( how we see this structure for DSP ) :
 ### Linux \:
 - [x] mkdir Release
 - [x] cd Release
-- [x] cmake -DCMAKE_BUILD_TYPE=Release .. -G "Unix Makefiles"
+- [x] cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install .. -G "Unix Makefiles"
 - [x] gmake VERBOSE=1
 - [x] cd ..
 - [x] mkdir Debug
 - [x] cd Debug
-- [x] cmake -DCMAKE_BUILD_TYPE=Debug .. -G "Unix Makefiles"
+- [x] cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/path/to/install .. -G "Unix Makefiles"
 - [x] gmake VERBOSE=1
 
 ### Windows \:
 *same steps as above for linux , only difference is depending on your environment 
   either Visual Studio or NMake project can be used*
   
-- [x] cmake -DCMAKE_BUILD_TYPE=Release .. -G "NMake Makefiles"
-- [x] cmake -DCMAKE_BUILD_TYPE=Debug   .. -G "NMake Makefiles"
-- [x] cmake -DCMAKE_BUILD_TYPE=Release .. -G "Visual Studio 14 2015"
-- [x] cmake -DCMAKE_BUILD_TYPE=Debug   .. -G "Visual Studio 14 2015"
+- [x] cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install .. -G "NMake Makefiles"
+- [x] cmake -DCMAKE_BUILD_TYPE=Debug  -DCMAKE_INSTALL_PREFIX=/path/to/install  .. -G "NMake Makefiles"
+- [x] cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/path/to/install .. -G "Visual Studio 14 2015"
+- [x] cmake -DCMAKE_BUILD_TYPE=Debug    -DCMAKE_INSTALL_PREFIX=/path/to/install .. -G "Visual Studio 14 2015"
 
 ## In case your Boost library is not installed under /usr/include/boost add where you boost library installed
 to cmake coomand with -DBOOST_ROOT=/where/boost/is/installed

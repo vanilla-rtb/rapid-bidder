@@ -33,3 +33,9 @@ target_link_libraries(
     ${CMAKE_THREAD_LIBS_INIT}
     ${RT_LIB}
 )
+
+install(TARGETS cache_loader_service
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+)
+

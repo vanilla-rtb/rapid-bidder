@@ -34,3 +34,9 @@ target_link_libraries(
         ${RT_LIB}
         )
 
+install(TARGETS multi_bidder_exchange_handler
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+)
+
+

@@ -12,10 +12,8 @@
 #include <boost/serialization/vector.hpp>
 
 #include "geo_campaign.hpp"
-#include "campaign_data.hpp"
 #include "ad.hpp"
 #include "geo_ad.hpp"
-#include "geo_campaign.hpp"
 #include "geo.hpp"
 
 //Non-Intrusive boost serialization implementation
@@ -23,12 +21,12 @@ namespace boost { namespace serialization {
     template<class Archive>
     void serialize(Archive & ar, Ad & value, const unsigned int version) {
         ar & value.ad_id;
+        ar & value.campaign_id;
         ar & value.width;
         ar & value.height;
         ar & value.position;
         ar & value.max_bid_micros;
         ar & value.code;
-        ar & value.record;
     }
     template<class Archive>
     void serialize(Archive & ar, GeoAd & value, const unsigned int version) {
@@ -43,14 +41,9 @@ namespace boost { namespace serialization {
         ar & value.record;
     }
     template<class Archive>
-    void serialize(Archive & ar, GeoCampaigns & value, const unsigned int version) {
+    void serialize(Archive & ar, GeoCampaign & value, const unsigned int version) {
         ar & value.geo_id;
-        ar & value.campaign_ids;
-    }
-    template<class Archive>
-    void serialize(Archive & ar, CampaignData & value, const unsigned int version) {
         ar & value.campaign_id;
-        ar & value.ad_ids;
     }
 }} 
 
