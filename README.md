@@ -44,6 +44,8 @@ Structure ( how we see this structure for DSP ) :
 - [x] cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/path/to/install .. -G "Unix Makefiles"
 - [x] gmake VERBOSE=1
 
+## add -DVANILLA_NO_EXAMPLES=1 if you don't want to build vanilla-rtb examples
+
 ### Windows \:
 *same steps as above for linux , only difference is depending on your environment 
   either Visual Studio or NMake project can be used*
