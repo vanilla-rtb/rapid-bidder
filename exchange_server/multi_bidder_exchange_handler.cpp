@@ -1,5 +1,5 @@
 /* 
- * File:   multi_bidder_exchange_handler.cpp
+ * File:   multi_exchange_handler.cpp
  * Author: arseny.bushev@gmail.com
  *
  * Created on 27 февраля 2017 г., 23:33
@@ -11,14 +11,14 @@
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/program_options.hpp>
-#include "rtb/exchange/exchange_handler.hpp"
-#include "rtb/exchange/exchange_server.hpp"
+#include "exchange/exchange_handler.hpp"
+#include "exchange/exchange_server.hpp"
 #include "CRUD/handlers/crud_dispatcher.hpp"
 #include "rtb/DSL/generic_dsl.hpp"
 #include "rtb/config/config.hpp"
 #include "rtb/messaging/serialization.hpp"
 #include "rtb/messaging/communicator.hpp"
-#include "rtb/core/tagged_tuple.hpp"
+#include "core/tagged_tuple.hpp"
 #include <boost/memory_order.hpp>
 #include "user_info.hpp"
  
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
         if(request.user) {
             vanilla_request.user_info.user_id = request.user.get().buyeruid;
         }
-        vanilla::multibidder_communicator<> communicator(
+        vanilla::multibidder_communicator<DSL::GenericDSL<> > communicator(
             config.data().bidders_port, 
             std::chrono::milliseconds(config.data().bidders_response_timeout)
         );

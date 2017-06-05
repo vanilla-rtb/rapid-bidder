@@ -14,7 +14,7 @@
 #include "rtb/core/tagged_tuple.hpp"
 #include "rtb/datacache/entity_cache.hpp"
 #include "rtb/datacache/memory_types.hpp"
-#include "datacache/geo_entity.hpp"
+#include "examples/datacache/geo_entity.hpp"
 
 #if BOOST_VERSION <= 106000
 #include <boost/utility/string_ref.hpp>
