@@ -1,6 +1,6 @@
 [submodule "framework"]
 	path = framework
-	url = git@github.com:venediktov/vanilla-rtb.git
+	url = https://github.com/venediktov/vanilla-rtb.git
 [submodule "deps/redisclient"]
 	path = deps/redisclient
 	url = https://github.com/nekipelov/redisclient
