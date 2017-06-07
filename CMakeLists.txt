@@ -71,7 +71,6 @@ if(ENABLE_REDISCLIENT)
         PREFIX deps/redisclient
         INSTALL_COMMAND ""
     )
-    FIND_LIBRARY(REDISCLIENT_LIBRARY redisclient deps/redisclient/src/redisclient-build/)
 endif()
 
 add_subdirectory(exchange_server)
