@@ -62,15 +62,18 @@ endif(WIN32)
 
 
 add_subdirectory(framework)
-add_subdirectory(exchange_server)
-add_subdirectory(bidders)
-add_subdirectory(loaders)
 
 if(ENABLE_REDISCLIENT)
     include(ExternalProject)
 
     ExternalProject_Add(redisclient
         SOURCE_DIR deps/redisclient
+        PREFIX deps/redisclient
+        INSTALL_COMMAND ""
     )
+    FIND_LIBRARY(REDISCLIENT_LIBRARY redisclient deps/redisclient/src/redisclient-build/)
 endif()
 
+add_subdirectory(exchange_server)
+add_subdirectory(bidders)
+add_subdirectory(loaders)

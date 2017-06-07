@@ -33,6 +33,8 @@
 #include "decision_router.hpp"
 #include "rtb/client/empty_key_value_client.hpp"
 #include "examples/multiexchange/user_info.hpp"
+#include "clients/redis_client_adapter.hpp"
+#include "client/asio_key_value_client.hpp"
 
 
 extern void init_framework_logging(const std::string &) ;
@@ -114,21 +116,27 @@ int main(int argc, char *argv[]) {
     
     bid_handler_type bid_handler(std::chrono::milliseconds(config.data().timeout));
     
-    auto request_user_data_f = [&bid_handler, &config](http::server::reply &reply, BidRequest &, auto && info) -> bool {
-        using kv_type = vanilla::client::empty_key_value_client;
+    auto request_user_data_f = [&bid_handler, &config](http::server::reply &reply, BidRequest &request, auto && info) -> bool {
+        using kv_type = vanilla::client::asio_key_value_client<vanilla::redis_client_adapter> ;
         thread_local kv_type kv_client;
-        bool is_matched_user = info.user_id.length();
+        bool is_matched_user = request.user && request.user.get().buyeruid.length();
         if (!is_matched_user) {
             return true; // bid unmatched
         }
+        info.user_id = request.user.get().buyeruid;
         if (!kv_client.connected()) {
             kv_client.connect(config.data().key_value_host, config.data().key_value_port);
         }
-        kv_client.request(info.user_id, info.user_data);
+        kv_client
+            .response([&info](const std::string &data) {
+                info.user_data = data;
+            })
+            .request(info.user_id, info.user_data);
         return true;
     };
     auto no_bid_f = [&bid_handler, &config](http::server::reply &reply, BidRequest &, auto&&) -> bool {
         reply << http::server::reply::flush("");
+        return true;
     };
     auto auction_async_f = [&bid_handler](http::server::reply &reply, BidRequest & bid_request, auto&&) -> bool {
         return bid_handler.handle_auction_async(reply, bid_request);
