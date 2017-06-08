@@ -10,7 +10,7 @@
 
 #include <boost/asio/io_service.hpp>
 #include <boost/asio/ip/address.hpp>
-#include "deps/redisclient/src/redisclient/redisasyncclient.h"
+#include "submodules/redisclient/src/redisclient/redisasyncclient.h"
 
 namespace vanilla {
 

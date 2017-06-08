@@ -13,6 +13,7 @@ endif(WIN32)
 
 set(CMAKE_CXX_STANDARD 14)
 set(ENABLE_REDISCLIENT TRUE)
+set(SUBMODULES_DIR "submodules")
 
 IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 SET ( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
@@ -67,8 +68,8 @@ if(ENABLE_REDISCLIENT)
     include(ExternalProject)
 
     ExternalProject_Add(redisclient
-        SOURCE_DIR deps/redisclient
-        PREFIX deps/redisclient
+        SOURCE_DIR ${SUBMODULES_DIR}/redisclient
+        PREFIX ${SUBMODULES_DIR}/redisclient
         INSTALL_COMMAND ""
     )
 endif()
