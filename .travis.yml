@@ -135,4 +135,6 @@ script:
   - (cd build-vanilla && make -j4 VERBOSE=1)
   - ccache --show-stats
 
+before_install:
+    git submodule update --init --recursive
 
