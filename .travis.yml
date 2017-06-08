@@ -131,10 +131,7 @@ script:
   # Go back to the root of the project and setup the build directory
   ############################################################################
   - cd ${TRAVIS_BUILD_DIR}
+  - git submodule update --init --recursive
   - (mkdir build-vanilla && cd build-vanilla && cmake .. ${CMAKE_OPTIONS})
   - (cd build-vanilla && make -j4 VERBOSE=1)
   - ccache --show-stats
-
-before_install:
-    git submodule update --init --recursive
-
