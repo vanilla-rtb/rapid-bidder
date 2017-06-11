@@ -9,7 +9,7 @@
 #define MULTIEXCHANGE_CONFIG_HPP
 
 #include <string>
-#include "../../rtb/config/config.hpp"
+#include "rtb/config/config.hpp"
 
 namespace vanilla {
     namespace multiexchange {
