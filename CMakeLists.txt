@@ -67,17 +67,10 @@ add_subdirectory(framework)
 if(ENABLE_REDISCLIENT)
     include(ExternalProject)
     
-    set(REDISCLIENT_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/${SUBMODULES_DIR}/redisclient)
-    set(CACHE_ARGS "-DBOOST_INCLUDEDIR="${Boost_INCLUDE_DIR})
-
-    message(status " Boost root " ${Boost_INCLUDE_DIR})
-    message(status " CACHE_ARGS: " ${CACHE_ARGS})
-
     ExternalProject_Add(redisclient
         SOURCE_DIR ${REDISCLIENT_SOURCE}
         INSTALL_COMMAND ""
         DOWNLOAD_COMMAND ""
-        CMAKE_ARGS ${CACHE_ARGS}
     )
 endif()
 
