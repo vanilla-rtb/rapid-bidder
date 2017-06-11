@@ -66,7 +66,9 @@ add_subdirectory(framework)
 
 if(ENABLE_REDISCLIENT)
     include(ExternalProject)
-    
+   
+	set(REDISCLIENT_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/${SUBMODULES_DIR}/redisclient)
+
     ExternalProject_Add(redisclient
         SOURCE_DIR ${REDISCLIENT_SOURCE}
         INSTALL_COMMAND ""
