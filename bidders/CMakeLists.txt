@@ -35,6 +35,7 @@ target_link_libraries(
         ${RT_LIB}
         )
 
+MESSAGE( STATUS "REDISCLIENT_LIBRARY:         " ${REDISCLIENT_LIBRARY} )
 target_link_libraries(
         http_bidder
         crud_service

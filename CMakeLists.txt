@@ -12,6 +12,8 @@ set(CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG}   -ggdb")
 endif(WIN32)
 
 set(CMAKE_CXX_STANDARD 14)
+set(ENABLE_REDISCLIENT TRUE)
+set(SUBMODULES_DIR "submodules")
 
 IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 SET ( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
@@ -61,7 +63,19 @@ endif(WIN32)
 
 
 add_subdirectory(framework)
+
+if(ENABLE_REDISCLIENT)
+    include(ExternalProject)
+  
+    set(REDISCLIENT_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/${SUBMODULES_DIR}/redisclient)
+    
+    ExternalProject_Add(redisclient
+        SOURCE_DIR ${REDISCLIENT_SOURCE}
+        INSTALL_COMMAND ""
+        DOWNLOAD_COMMAND ""
+    )
+endif()
+
 add_subdirectory(exchange_server)
 add_subdirectory(bidders)
 add_subdirectory(loaders)
-

@@ -10,9 +10,9 @@
 #include "rtb/DSL/generic_dsl.hpp"
 #include "rtb/config/config.hpp"
 #include "rtb/core/tagged_tuple.hpp"
-#include "datacache/ad_entity.hpp"
-#include "datacache/geo_entity.hpp"
-#include "datacache/city_country_entity.hpp"
+#include "examples/datacache/ad_entity.hpp"
+#include "examples/datacache/geo_entity.hpp"
+#include "examples/datacache/city_country_entity.hpp"
 #include "rtb/datacache/entity_cache.hpp"
 #include "rtb/datacache/memory_types.hpp"
 #include <boost/algorithm/string/split.hpp>
@@ -36,7 +36,7 @@
 #else
 #include <process.h>
 #endif
-#include "response_builder.hpp"
+#include "bidder.hpp"
 #include "examples/multiexchange/user_info.hpp"
 
 #include "rtb/core/core.hpp"
@@ -46,10 +46,10 @@ using RtbBidderCaches = vanilla::BidderCaches<BidderConfig>;
 
 void run(short port, RtbBidderCaches &bidder_caches) {
     using namespace vanilla::messaging;
-    vanilla::ResponseBuilder<BidderConfig> response_builder(bidder_caches);
-    communicator<broadcast>().inbound(port).process<vanilla::VanillaRequest>([&response_builder](auto endpoint, vanilla::VanillaRequest vanilla_request) {
+    vanilla::Bidder<DSL::GenericDSL<>, BidderConfig> bidder(bidder_caches);
+    communicator<broadcast>().inbound(port).process<vanilla::VanillaRequest>([&bidder](auto endpoint, vanilla::VanillaRequest vanilla_request) {
         LOG(debug) << "Request from user " << vanilla_request.user_info.user_id;
-        return response_builder.build(vanilla_request);
+        return bidder.bid(vanilla_request);
     }).dispatch();
 }
 
