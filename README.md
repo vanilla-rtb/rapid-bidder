@@ -1,13 +1,22 @@
 # rapid-bidder
 
-Real Time Bidding (RTB) - Demand Side Platform (DSP)
+Real Time Bidding (RTB) - Demand Side Platform (DSP) - Model project
 
-open-source application utilizing  vanilla-rtb stack.
+Open-source model application utilizing  vanilla-rtb stack and Redis.
 
+This is only model to show how vanilla-rtb stack can be included in your cmake project.
 
-[our DSP ecosystem](https://github.com/venediktov/vanilla-rtb/wiki)
+You are welcome to make pull requests to complete rappid-bidder with DSP specific business logic thus learning vanilla-rtb library.
 
-[Multi-bidder-model-with-communicator-for-Win-notifications](https://github.com/venediktov/vanilla-rtb/wiki/Multi-bidder-model-with-communicator-for-Win-notifications)
+Our resources are limited to maintaining  vanilla-rtb stack itself  here https://github.com/venediktov/vanilla-rtb
+
+Even though we periodically update rapid-bidder for now it's not our main priority.
+
+The examples how vanilla-rtb stack can be utilized are here https://github.com/venediktov/vanilla-rtb/tree/master/examples
+
+[vanilla-rtb DSP ecosystem](https://github.com/venediktov/vanilla-rtb/wiki)
+
+[vanilla-rtb Multi-bidder-model-with-communicator-for-Win-notifications](https://github.com/venediktov/vanilla-rtb/wiki/Multi-bidder-model-with-communicator-for-Win-notifications)
 
 [![Join the chat at https://gitter.im/vanilla-rtb/Lobby](https://badges.gitter.im/vanilla-rtb/Lobby.svg)](https://gitter.im/vanilla-rtb/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
 [![build ](https://travis-ci.org/venediktov/vanilla-rtb.svg?branch=master)](https://travis-ci.org/venediktov/vanilla-rtb)
@@ -23,7 +32,7 @@ Structure ( how we see this structure for DSP ) :
    * [etc/](../../tree/master/etc/) -- DSP configuration for all components of application
 * [CMakeLists.txt] - cmake file
 
->This DSP depends on  vanilla-rtb stack which referened via gh-submodule.
+>This DSP depends on  vanilla-rtb stack which referened via gh-submodule and Redis server ( for user matching ).
 >To update to the latest version of vanilla-rtb stack use the following commands \:
 
 * git clone --recursive git@github.com:vanilla-rtb/rapid-bidder.git rapid-bidder
@@ -58,6 +67,13 @@ Structure ( how we see this structure for DSP ) :
 ## In case your Boost library is not installed under /usr/include/boost add where you boost library installed
 to cmake coomand with -DBOOST_ROOT=/where/boost/is/installed
 
+By default if no -DCMAKE_INSTALL_PREFIX  is passed on cmake command everyting will be installed under
+
+```bash
+rapid-bidder/Release/install
+rapid-bidder/Debug/install
+```
+
 ### For faster builds invoking multiple make processes  , find number of cores on your system
 Linux command \: 
 * nproc
@@ -65,15 +81,17 @@ Linux command \:
 4
 
 pass it to your make script like this
+```bash
 gmake -j4 install
+```
 
-### Running  application as individaul steps (could be all put in one rapid-bidder.sh)\:
+### Running  application as individual steps (could be all put in one rapid-bidder.sh)\:
 - [x] HTTP-Bidder
-  * rapid-bidder/install/bin$ ./http_bidder --config etc/config.cfg
+  * rapid-bidder/Release/install/bin$ ./http_bidder --config etc/config.cfg
 - [x] Starting multiple bidders in one swoop,  currently configured as 5 bidders in config
-  * rapid-bidder/install/bin$ ./multi_bidder --config etc/config.cfg
+  * rapid-bidder/Release/install/bin$ ./multi_bidder --config etc/config.cfg
 - [x] Cache loader
-  * rapid-bidder/install/bin$ ./cache_loader --config etc/config.cfg
-- [x] Exchange Handler distributing to multi-bidders via communicator 
-  * rapid-bidder/install/bin$ ./multi_bidder_exchange_handler --config etc/config.cfg
+  * rapid-bidder/Release/install/bin$ ./cache_loader --config etc/config.cfg
+- [x] Exchange Handler distributing to multi-bidders via communicator
+  * rapid-bidder/Release/install/bin$ ./multi_bidder_exchange_handler --config etc/config.cfg
   
